@@ -96,8 +96,8 @@ limit 10;
 ```
 select arrival_city , month, count
 from(
-		(SELECT rank() OVER (PARTITION BY month ORDER BY count DESC) AS therank, * 
-			FROM (select arrival_city , to_char(actual_departure, 'Month') as month, count(to_char(actual_departure, 'Month')) as count
+		(select rank() over (partition by month order by count desc) as therank, * 
+			from (select arrival_city , to_char(actual_departure, 'Month') as month, count(to_char(actual_departure, 'Month')) as count
 			from flights_v fv 
 			where fv is not null
 			group by  month, arrival_city)as sub
