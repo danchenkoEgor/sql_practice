@@ -18,7 +18,8 @@ practicing postgresql in Dbeaver
 ```
 select arrival_city , to_char(actual_departure, 'Day') as day, (actual_arrival - actual_departure) as time
 from flights_v fv 
-where departure_city  = 'Волгоград' and fv is not null;```
+where departure_city  = 'Волгоград' and fv is not null;
+```
 
 2.
 ```
@@ -26,7 +27,8 @@ select actual_departure
 from flights_v fv 
 where departure_city  = 'Екатеринбург' and arrival_city = 'Москва' and actual_departure is not null 
 order  by actual_departure desc
-limit;```
+limit;
+```
 
 3.
 ```
@@ -35,7 +37,8 @@ from ticket_flights tf
 join tickets t 
 on tf.ticket_no = t.ticket_no 
 order by amount desc 
-limit 10;```
+limit 10;
+```
 
 4.
 ```
@@ -49,7 +52,8 @@ join flights f
 on f.flight_id = tf.flight_id 
 join airports_data ad 
 on ad.airport_code = f.departure_airport 
-order by total_amount desc;```
+order by total_amount desc;
+```
 
 5.
 ```
@@ -58,7 +62,8 @@ from flights_v fv
 where departure_city = 'Москва'
 group by arrival_city 
 order by count(arrival_city) desc
-limit 10;```
+limit 10;
+```
 
 6.
 ```
@@ -71,7 +76,8 @@ on tf.flight_id = f.flight_id
 join airports_data ad
 on ad.airport_code = f.arrival_airport 
 group by city, amount 
-order by amount, city asc;```
+order by amount, city asc;
+```
 
 7.
 ```
@@ -83,7 +89,8 @@ join airports_data ad
 on ad.airport_code = f.arrival_airport 
 group by city
 order by avgc desc 
-limit 10;```
+limit 10;
+```
 
 8.
 ```
@@ -96,7 +103,8 @@ from(
 			group by  month, arrival_city)as sub
 		)
 	) t
-WHERE therank = 1;```
+WHERE therank = 1;
+```
 
 9.
 ```
@@ -107,4 +115,5 @@ on tf.ticket_no = bp.ticket_no
 where fare_conditions = 'Business'
 group by seat_no
 order by count desc
-limit 1;```
+limit 1;
+```
